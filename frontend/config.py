@@ -1,11 +1,10 @@
 """
-config.py — Configuración global de la plataforma
+config.py — Configuración de la interfaz gráfica (frontend Pygame)
 Simulador de Laboratorio Virtual - EdTech
 Autor: Ortiz Cadena Maria Celeste Camila
 
-REFACTORIZACIÓN APLICADA: Replace Magic Number
-Todos los valores literales que aparecían dispersos en el prototipo
-se centralizan aquí con nombres descriptivos.
+CAMBIO: Se eliminó USUARIOS_SISTEMA — los usuarios ahora viven en MySQL.
+Los colores, tamaños y tiempos se mantienen igual.
 """
 
 # ── Pantalla ──────────────────────────────────────────────
@@ -33,7 +32,7 @@ COLOR_ERROR_TEXTO  = (255, 100, 100)
 # ── Tiempos de laboratorio (segundos) ────────────────────
 TIEMPO_LAB_QUIMICA = 300   # 5 minutos
 TIEMPO_LAB_FISICA  = 600   # 10 minutos
-UMBRAL_ALERTA      = 60    # segundos restantes para cambiar color
+UMBRAL_ALERTA      = 60
 
 # ── Fuentes ───────────────────────────────────────────────
 FUENTE_GRANDE  = ("arial", 32)
@@ -49,9 +48,3 @@ ESCENA_LOGIN   = 0
 ESCENA_MENU    = 1
 ESCENA_QUIMICA = 2
 ESCENA_FISICA  = 3
-
-# ── Usuarios del sistema (en producción vendría de una BD) ─
-USUARIOS_SISTEMA = {
-    "estudiante": "1234",
-    "admin":      "admin123",
-}

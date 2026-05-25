@@ -10,17 +10,17 @@ import pygame
 import sys
 import time
 
-# ❌ PROBLEMA 1: Números mágicos dispersos por todo el código (Magic Numbers)
-# ❌ PROBLEMA 2: Lógica mezclada, sin separación de responsabilidades
-# ❌ PROBLEMA 3: Código duplicado en las escenas
-# ❌ PROBLEMA 4: Variables con nombres poco descriptivos (n, t, c, etc.)
+#  PROBLEMA 1: Números mágicos dispersos por todo el código (Magic Numbers)
+#  PROBLEMA 2: Lógica mezclada, sin separación de responsabilidades
+#  PROBLEMA 3: Código duplicado en las escenas
+#  PROBLEMA 4: Variables con nombres poco descriptivos (n, t, c, etc.)
 
 pygame.init()
 
 p = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Lab Virtual")
 
-# ❌ Variables con nombres sin sentido
+#  Variables con nombres sin sentido
 r = True
 t = 0
 n = ""
@@ -32,7 +32,7 @@ f1 = pygame.font.SysFont("arial", 32)
 f2 = pygame.font.SysFont("arial", 20)
 f3 = pygame.font.SysFont("arial", 16)
 
-# ❌ Colores hardcodeados repetidos por todo el código sin nombres
+#  Colores hardcodeados repetidos por todo el código sin nombres
 BG = (15, 15, 40)
 W = (255, 255, 255)
 G = (100, 200, 100)
@@ -40,12 +40,12 @@ BL = (50, 100, 200)
 R = (200, 50, 50)
 GR = (150, 150, 150)
 
-# ❌ PROBLEMA: Datos de usuario hardcodeados directamente
+#  PROBLEMA: Datos de usuario hardcodeados directamente
 usuarios = {"estudiante": "1234", "admin": "admin123"}
 
-# ❌ Variables globales mezcladas con lógica de negocio
+#  Variables globales mezcladas con lógica de negocio
 tiempo_inicio = 0
-tiempo_limite = 300  # ❌ Magic number: 5 minutos en segundos
+tiempo_limite = 300  #  Magic number: 5 minutos en segundos
 elementos_quimica = []
 elementos_fisica = []
 reacciones = []
@@ -54,7 +54,7 @@ input_activo = ""
 # ---- FUNCIONES SIN ESTRUCTURA (todo en global) ----
 
 def dibujar_login():
-    # ❌ Función muy larga que hace demasiadas cosas a la vez
+    # Función muy larga que hace demasiadas cosas a la vez
     global n, pw, log, sc, input_activo
     p.fill((15, 15, 40))
     
@@ -100,14 +100,14 @@ def dibujar_login():
 
 
 def dibujar_menu():
-    # ❌ Otro bloque largo sin estructura
+    # Otro bloque largo sin estructura
     global sc
     p.fill((15, 15, 40))
     
     titulo = f1.render("SELECCIONA TU LABORATORIO", True, (255, 255, 255))
     p.blit(titulo, (640 - titulo.get_width()//2, 80))
     
-    # Botón química - ❌ coordenadas mágicas
+    # Botón química -  coordenadas mágicas
     pygame.draw.rect(p, (30, 100, 60), (200, 250, 380, 180), border_radius=15)
     pygame.draw.rect(p, (50, 180, 100), (200, 250, 380, 180), 3, border_radius=15)
     q_txt = f1.render("QUIMICA", True, (255, 255, 255))
@@ -115,7 +115,7 @@ def dibujar_menu():
     q_sub = f3.render("Reacciones y compuestos", True, (180, 255, 180))
     p.blit(q_sub, (390 - q_sub.get_width()//2, 370))
     
-    # Botón física - ❌ código casi idéntico al de química (duplicado)
+    # Botón física -  código casi idéntico al de química (duplicado)
     pygame.draw.rect(p, (30, 60, 120), (700, 250, 380, 180), border_radius=15)
     pygame.draw.rect(p, (50, 100, 220), (700, 250, 380, 180), 3, border_radius=15)
     f_txt = f1.render("FISICA", True, (255, 255, 255))
@@ -125,7 +125,7 @@ def dibujar_menu():
 
 
 def dibujar_quimica():
-    # ❌ Función enorme que dibuja TODO sin separar responsabilidades
+    #  Función enorme que dibuja TODO sin separar responsabilidades
     global t, sc
     p.fill((10, 20, 35))
     
@@ -134,15 +134,15 @@ def dibujar_quimica():
     h_txt = f2.render("LABORATORIO DE QUIMICA", True, (255, 255, 255))
     p.blit(h_txt, (20, 22))
     
-    # ❌ Reloj calculado directamente aquí sin encapsularlo
+    #  Reloj calculado directamente aquí sin encapsularlo
     elapsed = time.time() - tiempo_inicio
-    remaining = 300 - elapsed  # ❌ Magic number 300
+    remaining = 300 - elapsed  #  Magic number 300
     if remaining < 0:
         remaining = 0
     mins = int(remaining // 60)
     secs = int(remaining % 60)
     clock_str = f"Tiempo: {mins:02d}:{secs:02d}"
-    c_txt = f2.render(clock_str, True, (255, 220, 100) if remaining > 60 else (255, 80, 80))  # ❌ Magic number 60
+    c_txt = f2.render(clock_str, True, (255, 220, 100) if remaining > 60 else (255, 80, 80))  #  Magic number 60
     p.blit(c_txt, (1100, 22))
     
     # Mesa de laboratorio
@@ -170,7 +170,7 @@ def dibujar_quimica():
 
 
 def dibujar_fisica():
-    # ❌ Prácticamente el mismo esqueleto que dibujar_quimica() — código duplicado
+    #  Prácticamente el mismo esqueleto que dibujar_quimica() — código duplicado
     global t, sc
     p.fill((10, 15, 30))
     
@@ -178,9 +178,9 @@ def dibujar_fisica():
     h_txt = f2.render("LABORATORIO DE FISICA", True, (255, 255, 255))
     p.blit(h_txt, (20, 22))
     
-    # ❌ Mismo reloj copiado y pegado
+    #  Mismo reloj copiado y pegado
     elapsed = time.time() - tiempo_inicio
-    remaining = 600 - elapsed  # ❌ Otro magic number diferente: 10 minutos
+    remaining = 600 - elapsed  #  Otro magic number diferente: 10 minutos
     if remaining < 0:
         remaining = 0
     mins = int(remaining // 60)
@@ -227,7 +227,7 @@ while r:
                 elif 440 <= mx <= 840 and 310 <= my <= 355:
                     input_activo = "pass"
                 elif 540 <= mx <= 740 and 390 <= my <= 440:
-                    # ❌ Validación directa en el loop
+                    #  Validación directa en el loop
                     if n in usuarios and usuarios[n] == pw:
                         log = True
                         sc = 1
@@ -262,7 +262,7 @@ while r:
                     elif input_activo == "pass" and len(pw) < 20:
                         pw += event.unicode
     
-    # ❌ Condicional enorme sin estructura
+    #  Condicional enorme sin estructura
     if sc == 0:
         dibujar_login()
     elif sc == 1:
@@ -273,7 +273,7 @@ while r:
         dibujar_fisica()
     
     pygame.display.flip()
-    pygame.time.Clock().tick(60)  # ❌ Magic number 60 (FPS)
+    pygame.time.Clock().tick(60)  #  Magic number 60 (FPS)
 
 pygame.quit()
 sys.exit()
