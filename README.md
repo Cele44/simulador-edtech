@@ -1,4 +1,4 @@
-# Simulador_Lab - Plataforma Educativa Virtual (EdTech)
+# Simulador_Lab - Plataforma Educativa Virtual (EdTech) 🧪
 
 Proyecto académico desarrollado bajo la línea de producto **EdTech (Educational Technology)**, enfocado en la simulación interactiva de un laboratorio virtual utilizando arquitectura modular cliente-servidor.
 
@@ -18,7 +18,7 @@ Proyecto académico desarrollado bajo la línea de producto **EdTech (Educationa
 
 ---
 
-# Arquitectura del proyecto
+# Arquitectura del proyecto 🧫
 
 ```plaintext
 SIMULADOR_LAB/
@@ -127,24 +127,6 @@ Configurar las credenciales dentro del archivo:
 backend/.env
 ```
 
----
-
-# Ejecución
-
-## Backend
-
-```bash
-uvicorn main:app --reload
-```
-
-## Frontend
-
-```bash
-python main.py
-```
-
----
-
 # Autor
 
-Maria Celeste
+Maria Celeste 🫧
